@@ -38,17 +38,21 @@ public class OcrService {
             file.transferTo(tempFile.toFile());
 
             Tesseract tesseract = new Tesseract();
-            // IMPORTANT: You need to set the tessdata path. 
-            // Download eng.traineddata and place it in a 'tessdata' folder in your project root.
             
-            // robust path finding
-            Path tessDataPath = Path.of("tessdata");
-            if (!Files.exists(tessDataPath)) {
-                // Try absolute path assuming standard project structure if running from elsewhere
-                tessDataPath = Path.of(System.getProperty("user.dir"), "tessdata");
+            // Check for TESSDATA_PREFIX environment variable first (used in Docker/production)
+            String tessDataEnv = System.getenv("TESSDATA_PREFIX");
+            Path tessDataPath;
+            
+            if (tessDataEnv != null && !tessDataEnv.isEmpty()) {
+                tessDataPath = Path.of(tessDataEnv);
+            } else {
+                // Fallback for local development
+                tessDataPath = Path.of("tessdata");
                 if (!Files.exists(tessDataPath)) {
-                     // fallback to explicit backend path if needed (e.g. if running from parent dir)
-                     tessDataPath = Path.of(System.getProperty("user.dir"), "backend", "tessdata");
+                    tessDataPath = Path.of(System.getProperty("user.dir"), "tessdata");
+                    if (!Files.exists(tessDataPath)) {
+                        tessDataPath = Path.of(System.getProperty("user.dir"), "backend", "tessdata");
+                    }
                 }
             }
             
@@ -66,7 +70,7 @@ public class OcrService {
             Files.deleteIfExists(tempFile);
             return result;
         } catch (IOException | TesseractException e) {
-            e.printStackTrace(); // Log the full error to console
+            e.printStackTrace();
             throw new RuntimeException("Failed to extract text from Image: " + e.getMessage(), e);
         }
     }
