@@ -53,7 +53,7 @@ function App() {
       <footer className="bg-white border-t mt-12 py-8">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-gray-700 font-medium mb-2">
-            We crafted with love <span className="text-red-500">❤️</span>
+            We crafted with <span className="text-red-500">❤️</span>
           </p>
           <p className="text-gray-600 mb-3">
             Eat well, do well and keep your health in check! Your well-being is our priority.
