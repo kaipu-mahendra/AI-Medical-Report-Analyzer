@@ -35,6 +35,7 @@ const FileUpload = ({ onAnalysisComplete }) => {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
+        timeout: 120000, // 2 minutes timeout for OCR processing
       });
       onAnalysisComplete(response.data);
     } catch (err) {
@@ -97,12 +98,18 @@ const FileUpload = ({ onAnalysisComplete }) => {
           {loading ? (
             <span className="flex items-center justify-center gap-2">
               <Loader2 className="w-4 h-4 animate-spin" />
-              Analyzing...
+              Analyzing... This may take up to 2 minutes
             </span>
           ) : (
             'Analyze Report'
           )}
         </button>
+        
+        {loading && (
+          <p className="text-xs text-gray-500 text-center mt-2">
+            ⏱️ First upload after inactivity may take 30-60 seconds to wake up the server
+          </p>
+        )}
       </form>
     </div>
   );
