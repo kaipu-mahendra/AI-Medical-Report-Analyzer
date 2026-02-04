@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FileUpload from './components/FileUpload';
 import ReportAnalysis from './components/ReportAnalysis';
-import { Stethoscope } from 'lucide-react';
+import { Stethoscope, Mail } from 'lucide-react';
 
 function App() {
   const [reportData, setReportData] = useState(null);
@@ -56,11 +56,27 @@ function App() {
             We crafted with love <span className="text-red-500">❤️</span>
           </p>
           <p className="text-gray-600 mb-3">
-            Eat well, do well and keep healthy
+            Eat well, do well and keep your health in check! Your well-being is our priority.
           </p>
-          <p className="text-gray-400 text-sm">
-            © 2026 AI Medical Analyzer. For educational purposes only. Not a substitute for professional medical advice.
+          <p className="text-gray-400 text-sm mb-3">
+            © 2026 AI Medical Analyzer. All rights reserved.
           </p>
+          <div className="flex justify-center items-center gap-4 flex-wrap">
+            <a 
+              href="mailto:kaipumahendrar@gmail.com" 
+              className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
+            >
+              <Mail className="w-4 h-4" />
+              <span className="text-sm">kaipumahendrar@gmail.com</span>
+            </a>
+            <a 
+              href="mailto:gadugoyyalakesumani@gmail.com" 
+              className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
+            >
+              <Mail className="w-4 h-4" />
+              <span className="text-sm">gadugoyyalakesumani@gmail.com</span>
+            </a>
+          </div>
         </div>
       </footer>
     </div>
