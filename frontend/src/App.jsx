@@ -51,8 +51,16 @@ function App() {
 
       {/* Footer */}
       <footer className="bg-white border-t mt-12 py-8">
-        <div className="max-w-7xl mx-auto px-4 text-center text-gray-400 text-sm">
-          <p>© 2026 AI Medical Analyzer. For educational purposes only. Not a substitute for professional medical advice.</p>
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="text-gray-700 font-medium mb-2">
+            We crafted with love <span className="text-red-500">❤️</span>
+          </p>
+          <p className="text-gray-600 mb-3">
+            Eat well, do well and keep healthy
+          </p>
+          <p className="text-gray-400 text-sm">
+            © 2026 AI Medical Analyzer. For educational purposes only. Not a substitute for professional medical advice.
+          </p>
         </div>
       </footer>
     </div>
